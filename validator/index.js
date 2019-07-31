@@ -53,3 +53,4 @@ exports.userSignupValidator = (req, res, next) => {
   //proceed to the next middleware
   next();
 };
+
