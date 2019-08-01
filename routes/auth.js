@@ -3,14 +3,12 @@ const {
     signup,
     signin,
     signout,
-    //forgotPassword,
-    //resetPassword,
+    forgotPassword,
+    resetPassword,
     socialLogin
 } = require("../controllers/auth");
- 
-
 const { userById } = require('../controllers/user');
-const { userSignupValidator } = require('../validator');
+const { userSignupValidator, passwordResetValidator } = require("../validator");
 
 const router = express.Router();
 
@@ -20,6 +18,9 @@ const router = express.Router();
 router.post('/signup', userSignupValidator, signup);
 router.post('/signin', signin);
 router.get('/signout', signout);
+// password forgot and reset routes
+router.put("/forgot-password", forgotPassword);
+router.put("/reset-password", passwordResetValidator, resetPassword);
 
 router.post("/social-login", socialLogin); 
 
